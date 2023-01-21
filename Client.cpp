@@ -33,7 +33,7 @@ void Client::StartClient() {
 
     WSADATA wsaData;
     SOCKET SocketConnection = INVALID_SOCKET;
-    struct addrinfo* result = NULL, *ptr = NULL, hints;
+    struct addrinfo* result = NULL, *ptr = NULL, addr;
     int value;
     char buffer [] = "Hello";
     char recv_buffer[DATA_LEN] = "";
@@ -47,12 +47,12 @@ void Client::StartClient() {
 
     printf("WSAStartup successful!\n");
 
-    ZeroMemory(&hints, sizeof(hints));
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
+    ZeroMemory(&addr, sizeof(addr));
+    addr.ai_family = AF_UNSPEC;
+    addr.ai_socktype = SOCK_STREAM;
+    addr.ai_protocol = IPPROTO_TCP;
 
-    value = getaddrinfo(NULL, PORT, &hints, &result);
+    value = getaddrinfo(NULL, PORT, &addr, &result);
     if (value != 0) {
         printf("Error at getting address: %d\n", value);
         WSACleanup();
