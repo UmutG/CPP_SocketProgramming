@@ -1,3 +1,4 @@
+/ @author: Umut Geyik | github.com/UmutG
 #define WIN32_LEAN_AND_MEAN
 
 #include <iostream>
