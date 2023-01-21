@@ -58,7 +58,9 @@ void Client::StartClient() {
         exit(0);
     }
 
-
+    // Client's workflow: socket() -> connect() -> send() -> recv()
+    // Finally, client shutdowns and closes all sockets.
+    
     // Attempt to connect to an address until one succeeds
     for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 
